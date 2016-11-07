@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'com.novoda.bintray-release'
 
 def custom_version = "24.0.0"
@@ -11,7 +12,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 	
     buildTypes {
@@ -36,6 +37,7 @@ android {
         preDexLibraries = false
         jumboMode true
     }
+
 }
 
 repositories {
@@ -53,7 +55,13 @@ dependencies {
     compile "com.android.support:design:${custom_version}"
     compile "com.android.support:cardview-v7:${custom_version}"
     compile "com.android.support:recyclerview-v7:${custom_version}"
-//    compile "com.android.support:support-annotations:${custom_version}"
+}
+
+allprojects {
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
 }
 
 ext {
@@ -71,9 +79,11 @@ ext {
 
     libraryVersion = '1.0.0'
 
+    userOrg = 'hmilyylimh'
+
     developerId = 'hmilyylimh'
     developerName = 'hmilyylimh'
-    developerEmail = 'hehuixtu@126.com'
+    developerEmail = 'hehuixtu@tom.com'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
